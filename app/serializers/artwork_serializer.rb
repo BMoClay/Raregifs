@@ -3,6 +3,5 @@ class ArtworkSerializer < ActiveModel::Serializer
   has_many :acquisitions 
   # has_many :users, through: :acquisitions
 
-  # attributes :id, :user_id, :image, :title
   attributes :id, :user_id, :image, :title
 end

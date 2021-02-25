@@ -33,7 +33,7 @@ class ArtworksController < ApplicationController
 
     private
     def artwork_params
-        params.permit(:title, :image)
+        params.permit(:title, :image, :user_id)
     end
 
 end
