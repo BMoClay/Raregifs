@@ -4,10 +4,18 @@ class UsersController < ApplicationController
       render json: users
     end
 
-    # auth? login? me?=> mycollection
+    def login
+      user = User.first
+      render json: user
+    end
 
-    def collection
-      # user = User.find(params[:id])
+    def signup 
+      user = User.create(user_params)
+      render json: user
+    end
+
+    def me 
+      user = User.first 
       render json: user
     end
 
@@ -40,6 +48,6 @@ class UsersController < ApplicationController
 
     private
       def user_params
-        params.permit(:name, :password, :email)
+        params.permit(:name, :password)
       end
 end
