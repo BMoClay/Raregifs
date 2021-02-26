@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   # or just do one specifically for users login
   post "/login", to: "users#login"
   post "/signup", to: "users#signup"
-
+  post "/acquisition", to: "acquisitions#create"
+  get "/acquisition", to: "acquisitions#index"
   post "/upload", to: "artworks#upload"
+  patch "/update", to: "artworks#update"
   # post "/upload", to: "artworks#create"
   get "/me", to: "users#me"
   

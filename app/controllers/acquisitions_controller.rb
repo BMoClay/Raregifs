@@ -10,7 +10,7 @@ class AcquisitionsController < ApplicationController
     end
 
     def create 
-        acquisition = Acquisition.create(acquistion_params)
+        acquisition = Acquisition.create(acquisition_params)
         render json: acquisition
     end
 
