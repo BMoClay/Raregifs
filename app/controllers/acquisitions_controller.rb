@@ -17,7 +17,7 @@ class AcquisitionsController < ApplicationController
     def destroy 
         acquisition = Acquisition.find(params[:id])
         acquisition.destroy 
-        render json: favorite
+        render json: acquisition
     end
 
     private
