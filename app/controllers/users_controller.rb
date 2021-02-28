@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: [:me, :update]
-    # def index
-    #   users = User.all
-    #   render json: users
-    # end
+  # before_action :authenticate, only: [:me, :update]
+  before_action :authenticate
+  
+    def index
+      users = User.all
+      render json: users
+    end
 
     def login
       user = User.first
