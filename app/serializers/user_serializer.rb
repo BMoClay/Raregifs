@@ -1,6 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  has_many :acquisitions 
-  has_many :artworks, through: :acquisitions
   has_many :artworks
-  attributes :id, :name, :artworks, :acquisitions
+  has_many :acquisitions 
+  has_many :acquired_artworks, through: :acquisitions, source: :artwork
+
+  attributes :id, :name, :artworks, :acquisitions, :acquired_artworks
 end

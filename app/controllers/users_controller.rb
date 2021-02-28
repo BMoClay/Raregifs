@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :authenticate, only: [:me, :update]
-  before_action :authenticate
+  before_action :authenticate, only: [:me, :update]
+  # before_action :authenticate
   
     def index
       users = User.all
@@ -21,10 +21,11 @@ class UsersController < ApplicationController
       render json: @current_user
     end
 
-    # def show
-    #   user = User.find(params[:id])
-    #   render json: user
-    # end
+    def show
+      user = User.find(params[:id])
+      render json: user
+      # render json: @current_user
+    end
 
     # def create
     #   user = User.create(user_params)
@@ -43,11 +44,15 @@ class UsersController < ApplicationController
       render json: @current_user
     end
 
-    # def acquisitions
-    #     user = User.find(params[:id])
-    #     render json: user.acquisitions
-    # end
-
+    def acquisitions
+      user = User.find(params[:id])
+      render json: user.acquisitions
+    end 
+    # def acquiredArtworks
+    #   user = User.find(params[:id])
+    #   render json: user.acquiredArtworks
+    # end 
+   
     private
       def user_params
         params.permit(:name, :password)

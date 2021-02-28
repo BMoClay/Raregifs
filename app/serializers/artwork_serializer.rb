@@ -1,8 +1,7 @@
 class ArtworkSerializer < ActiveModel::Serializer
   belongs_to :user 
   has_many :acquisitions 
-  has_many :users, :through :acquisitions
-  # has_many :acquiring_users, through: :acquisitions, :source => "acquisition"
+  has_many :acquiring_users, through: :acquisitions, source: :user
 
-  attributes :id, :user_id, :image, :title, :user, :acquisitions
+  attributes :id, :user_id, :user, :image, :title, :acquisitions, :acquiring_users
 end
