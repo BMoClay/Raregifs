@@ -48,11 +48,12 @@ class UsersController < ApplicationController
       user = User.find(params[:id])
       render json: user.acquisitions
     end 
-    # def acquiredArtworks
-    #   user = User.find(params[:id])
-    #   render json: user.acquiredArtworks
-    # end 
-   
+
+    def artworks 
+      user = User.find(params[:id])
+      render json: user.artworks
+    end
+       
     private
       def user_params
         params.permit(:name, :password)
