@@ -10,17 +10,22 @@ Rails.application.routes.draw do
   post "/acquisitions", to: "acquisitions#create"
   get "/acquisitions", to: "acquisitions#index"
   post "/me", to: "users#acquisitions"
+  delete "/acquisitions", to: "acquisitions#destroy"
   # get "/users", to: "users#acquisitions"
   
   post "/upload", to: "artworks#upload"
   patch "/update", to: "artworks#update"
-  delete "/acquisitions", to: "acquisitions#delete"
-  # delete "/acquisitions", to: "acquisitions#destroy"
   get "/users", to: "users#index"
-  get "/users/:id/artworks", to: "users#artworks"
-  get "/users/:id/acquisitions", to: "users#acquisitions"
-
   get "/acquisitions", to: "acquisitions#index"
+  # delete "/acquisitions", to: "acquisitions#destroy"
+  # delete "/acquisitions", to: "acquisitions#delete"
+
+  # get "/users/:id/artworks", to: "users#artworks"
+  # get "/users/:id/artworks/:id", to: "artworks#artworks"
+  # get "/users/:id/acquisitions", to: "users#acquisitions"
+  # get "/users/:id/acquisitions/:id", to: "users#acquisition"
+  # delete "/users/:id/artworks/:id" to: "artworks#delete"
+
   
 
   # delete "/me", to: "users#delete"
