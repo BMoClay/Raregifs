@@ -22,3 +22,6 @@ Acquisition.create(user_id: 2, artwork_id: 1)
 Acquisition.create(user_id: 1, artwork_id: 6)
 Acquisition.create(user_id: 2, artwork_id: 6)
 Acquisition.create(user_id: 3, artwork_id: 1)
+
+Comment.create(commenter_id: 1, commentee_id: 3, comment: "hey whatsup this is cool")
+Comment.create(commenter_id: 1, commentee_id: 2, comment: "hey whatsup this is cool")

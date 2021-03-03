@@ -44,14 +44,26 @@ class UsersController < ApplicationController
       render json: @current_user
     end
 
-    def acquisitions
-      user = User.find(params[:id])
-      render json: user.acquisitions
+    def myAcquisitions
+      # user = User.find(params[:id])
+      # render json: user.acquisitions
+      # @current_user.acquisitions
+      render json: @current_user.acquisitions
     end 
 
+    def acquisitions
+      render json: @current_user.acquisitions
+    end
+
     def artworks 
-      user = User.find(params[:id])
-      render json: user.artworks
+      render json: @current_user.acquisitions
+    end
+
+    def myArtworks 
+      # user = User.find(params[:id])
+      # render json: user.artworks
+    #  @current_user.artworks
+      render json: @current_user.artworks
     end
        
     private

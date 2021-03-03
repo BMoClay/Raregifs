@@ -1,22 +1,29 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :acquisitions
   resources :artworks
   resources :users
 
   get "/me", to: "users#me"
+  # get "/myArtworks", to: "users#myArtworks"
+  # get "/myAcquisitions", to: "users#myAcquisitions"
+  get "/users", to: "users#index"
+  get "/acquisitions", to: "acquisitions#index"
+  get "/artworks", to: "artworks#index"
+  # get "/users/:id/acquisitions", to: "users#acquisitons"
+  # get "/users/:id/artworks", to: "users#artworks" 
+
   post "/login", to: "users#login"
   post "/signup", to: "users#signup"
 
-  post "/acquisitions", to: "acquisitions#create"
-  get "/acquisitions", to: "acquisitions#index"
   post "/me", to: "users#acquisitions"
+
+  post "/acquisitions", to: "acquisitions#create"
   delete "/acquisitions", to: "acquisitions#destroy"
-  # get "/users", to: "users#acquisitions"
   
   post "/upload", to: "artworks#upload"
   patch "/update", to: "artworks#update"
-  get "/users", to: "users#index"
-  get "/acquisitions", to: "acquisitions#index"
+
   # delete "/acquisitions", to: "acquisitions#destroy"
   # delete "/acquisitions", to: "acquisitions#delete"
 
