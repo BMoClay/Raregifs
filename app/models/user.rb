@@ -1,17 +1,14 @@
 class User < ApplicationRecord
     has_secure_password
     validates :name, uniqueness: { case_sensitive: false }
-    # validates_uniqueness_of :comments_received, scope: :comment_id
-    # validates_uniqueness_of :comments_made, scope: :comment_id
     has_many :artworks
     has_many :acquisitions
     
+   
     has_many :comments_received, class_name: 'Comment', foreign_key: :commentee_id
+    has_many :commenting_users, through: :comments_received, source: :commenter
     has_many :comments_made, class_name: 'Comment', foreign_key: :commenter_id
-
-
-
-
+    has_many :commented_on_users, through: :comments_made, source: :commentee
 
 
 
@@ -23,13 +20,6 @@ class User < ApplicationRecord
     # has_many :comments_received, through: :commenter
     # has_many :commentees, foreign_key: :commentee_id, class_name: 'Comment'
     # has_many :comments_made, through: :commentees
-
-
-
-
-    
-
-
 
 
     # has_many :acquired_artworks, through: :acquisitions

@@ -3,33 +3,23 @@ class UserSerializer < ActiveModel::Serializer
   has_many :artworks
 
   has_many :comments_received, class_name: 'Comment', foreign_key: :commentee_id
-  has_many :comments_made, class_name: 'Comment', foreign_key: :commenter_id
+  # has_many :commenting_users, through: :comments_received, source: :commenter
+  # has_many :comments_made, class_name: 'Comment', foreign_key: :commenter_id
+  # has_many :commented_on_users, through: :comments_made, source: :commentee
 
   attributes :id, :name, :artworks, :acquisitions, :comments_received, :comments_made
-
-
-
-
-
+  # , :commenting_users, :commented_on_users
 
 
 
 
   
-   # has_many :commenting_users, foreign_key: :commenter_id, class_name: 'Comment'
-  # has_many :comments_received, through: :commenting_users, source: :commenter
+
+
+
+  
+  # has_many :commenting_users, foreign_key: :commenter_id, class_name: 'Comment'
   # has_many :commented_on_users, foreign_key: :commentee_id, class_name: 'Comment'
-  # has_many :comments_made, through: :commented_on_users, source: :commentee
-
-
-
-
-
-
-  
-
-
-
 
 
 

@@ -12,14 +12,13 @@ Rails.application.routes.draw do
   get "/artworks", to: "artworks#index"
   # get "/users/:id/acquisitions", to: "users#acquisitons"
   # get "/users/:id/artworks", to: "users#artworks" 
-
   post "/login", to: "users#login"
   post "/signup", to: "users#signup"
-
   post "/me", to: "users#acquisitions"
-
   post "/acquisitions", to: "acquisitions#create"
   delete "/acquisitions", to: "acquisitions#destroy"
+
+  post "/comments", to: "comments#create"
   
   post "/upload", to: "artworks#upload"
   patch "/update", to: "artworks#update"
