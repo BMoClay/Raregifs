@@ -44,6 +44,24 @@ class UsersController < ApplicationController
       render json: @current_user
     end
 
+
+    private
+      def user_params
+        params.permit(:name, :password)
+      end
+end
+
+
+
+
+
+
+
+
+
+
+
+
     # def myAcquisitions
     #   # user = User.find(params[:id])
     #   # render json: user.acquisitions
@@ -66,8 +84,3 @@ class UsersController < ApplicationController
     #   render json: @current_user.artworks
     # end
        
-    private
-      def user_params
-        params.permit(:name, :password)
-      end
-end
