@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
 end
 
+
+
+
+
 # before_destroy :destroy_comments_received
 
 # def destroy_comments_received

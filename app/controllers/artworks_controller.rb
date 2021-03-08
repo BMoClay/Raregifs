@@ -11,7 +11,11 @@ class ArtworksController < ApplicationController
 
     def create
         artwork = Artwork.create(artwork_params)
-        render json: artwork
+        # activestorage
+        # if artwork.valid?
+            # artwork.image.attach(params.require[:image])
+            render json: artwork
+        # end
     end
 
     def update 
@@ -26,13 +30,9 @@ class ArtworksController < ApplicationController
         render json: artwork 
     end
 
-    # def collections
-    #     artwork = Artwork.find(params[:id])
-    #     render json: artwork.acquisitions
-    # end
-
     private
     def artwork_params
+        # params.require(:artwork).permit(:title, :image, :user_id)
         params.permit(:title, :image, :user_id)
     end
 
