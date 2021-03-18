@@ -8,7 +8,8 @@ class UserSerializer < ActiveModel::Serializer
   # has_many :commented_on_users, through: :comments_made, source: :commentee
 
   attributes :id, :name, :artworks, :acquisitions, :comments_received, :comments_made
-  # , :commenting_users, :commented_on_users
+ 
+  #attributes :id, :name, :password_digest, :artworks, :acquisitions, :comments_received, :comments_made
 
 
 

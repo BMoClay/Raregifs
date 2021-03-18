@@ -8,13 +8,21 @@ class UsersController < ApplicationController
     end
 
     def login
-      user = User.first
-      render json: @current_user
+      user = User.find_by(name: params[:name])
+      if user && user.authenticate(params[:password])
+        render json: user
+      else 
+        render json: { errors: ["Invalid name or password"] }, status: :unauthorized
+      end
     end
 
     def signup 
       user = User.create(user_params)
-      render json: @current_user
+      if user.valid?
+        render json: user, status: :created
+      else 
+        render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      end
     end
 
     def me 
@@ -26,11 +34,6 @@ class UsersController < ApplicationController
       render json: user
       # render json: @current_user
     end
-
-    # def create
-    #   user = User.create(user_params)
-    #   render json: user
-    # end
 
     def update
       # user = User.find(params[:id])
@@ -46,41 +49,8 @@ class UsersController < ApplicationController
 
 
     private
+
       def user_params
         params.permit(:name, :password)
       end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-    # def myAcquisitions
-    #   # user = User.find(params[:id])
-    #   # render json: user.acquisitions
-    #   # @current_user.acquisitions
-    #   render json: @current_user.acquisitions
-    # end 
-
-    # def acquisitions
-    #   render json: @current_user.acquisitions
-    # end
-
-    # def artworks 
-    #   render json: @current_user.acquisitions
-    # end
-
-    # def myArtworks 
-    #   # user = User.find(params[:id])
-    #   # render json: user.artworks
-    # #  @current_user.artworks
-    #   render json: @current_user.artworks
-    # end
-       

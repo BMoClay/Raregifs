@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   resources :users
 
   get "/me", to: "users#me"
+  patch "/me", to: "users#update"
   get "/users", to: "users#index"
-  get "/acquisitions", to: "acquisitions#index"
-  get "/artworks", to: "artworks#index"
   post "/login", to: "users#login"
   post "/signup", to: "users#signup"
+  get "/acquisitions", to: "acquisitions#index"
+  get "/artworks", to: "artworks#index"
   post "/me", to: "users#acquisitions"
   post "/acquisitions", to: "acquisitions#create"
   delete "/acquisitions", to: "acquisitions#destroy"
