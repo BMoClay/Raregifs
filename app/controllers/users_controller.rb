@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     def login
       user = User.find_by(name: params[:name])
       if user && user.authenticate(params[:password])
-        render json: user
+        token = JWT.encode({ user_id: user.id }, 'my_secret', 'HS256')
+        render json: { user: UserSerializer.new(user), token: token }
       else 
         render json: { errors: ["Invalid name or password"] }, status: :unauthorized
       end
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
     def signup 
       user = User.create(user_params)
       if user.valid?
-        render json: user, status: :created
+        token = JWT.encode({ user_id: user.id }, 'my_secret', 'HS256')
+        render json: { user: UserSerializer.new(user), token: token }, status: :created
       else 
         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
       end
