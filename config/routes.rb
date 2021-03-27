@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   post "/acquisitions", to: "acquisitions#create"
   delete "/acquisitions", to: "acquisitions#destroy"
 
+  #delete "/users", to: "users#destroy"
+  delete "/me", to: "users#destroy"
+
   post "/comments", to: "comments#create"
   
   post "/upload", to: "artworks#upload"
