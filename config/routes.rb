@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :artworks
   resources :users
 
+  post "/login/google", to: "users#google_login"
   get "/me", to: "users#me"
   patch "/me", to: "users#update"
   get "/users", to: "users#index"

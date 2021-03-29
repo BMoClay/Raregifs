@@ -1,6 +1,6 @@
 # take in the headers and get back authenticated user
 
-class AuthorizeRequest 
+class AuthorizeGoogleRequest 
     def initialize(headers = {})
         @headers = headers
     end
@@ -8,7 +8,8 @@ class AuthorizeRequest
     def user
         payload = decode(auth_token)
         if payload
-            User.find_by(id: payload['user_id'])
+            # User.find_by(id: payload['user_id'])
+            User.find_or_create_from_google(payload)
         end
     end
 
@@ -17,16 +18,16 @@ class AuthorizeRequest
     attr_reader :headers
       
     def decode(token)
-        # JsonWebToken.decode(token)[0]
-        JsonWebToken.decode(token)
+        validator = GoogleIDToken::Validator.new 
+        validator.check(token, "1015821135990-ivdthienjnk5ol8vjb4k75isajpggbk5.apps.googleusercontent.com")
+        # JsonWebToken.decode(token)
     rescue
         nil
     end
 
     def auth_token
-        # Bearer 123.ddst.3454
         headers['Authorization'].split.last if headers['Authorization']
     end
 end
 
-# AuthorizeRequest.new(request.headers).user
+#AuthorizeGoogleRequest.new(request.headers).user

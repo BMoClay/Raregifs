@@ -1,13 +1,23 @@
 class UsersController < ApplicationController
   before_action :authenticate, only: [:me, :update]
   
-    def index
-      users = User.all
-      render json: users
+    def me 
+      render json: @current_user
+    end
+    
+    def google_login
+      user = AuthorizeGoogleRequest.new(request.headers).user
+      if user      
+        token = JsonWebToken.encode({ user_id: user.id })
+        render json: { user: UserSerializer.new(user), token: token }
+      else
+        render json: { errors: ["Oops something went wrong"]}, status: :unauthorized
+      end
     end
 
     def login
       user = User.find_by(name: params[:name])
+      # byebug
       if user && user.authenticate(params[:password])
         token = JsonWebToken.encode({ user_id: user.id })
         render json: { user: UserSerializer.new(user), token: token }
@@ -26,8 +36,9 @@ class UsersController < ApplicationController
       end
     end
 
-    def me 
-      render json: @current_user
+    def index
+      users = User.all
+      render json: users
     end
 
     def show
