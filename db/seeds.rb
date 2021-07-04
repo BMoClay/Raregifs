@@ -11,7 +11,7 @@ User.create(name: "Morgan", password: "456")
 User.create(name: "Adrienne", password: "789")
 User.create(name: "Sam", password: "666")
 
-Artwork.create(user_id: 1, title: "Mysterious mischief, image: "https://i.imgur.com/zM9FiHs.gif")
+Artwork.create(user_id: 1, title: "Mysterious mischief", image: "https://i.imgur.com/zM9FiHs.gif")
 Artwork.create(user_id: 1, title: "Falling in reverse", image:"https://i.imgur.com/Twlqjkx.gifv")
 Artwork.create(user_id: 2, title: "Gloucester", image:"https://fritsahlefeldt.files.wordpress.com/2019/09/30ec7-watercolor-sketch-ertholmene-christiansoe-by-frits-ahlefeldt.jpg?w=1200")     
 Artwork.create(user_id: 2, title: "Smile", image:"https://media2.giphy.com/media/lPG6wNE7MZj3ttYsM9/source.gif") 
